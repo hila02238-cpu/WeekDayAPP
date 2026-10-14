@@ -25,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.material3.Button
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +53,26 @@ fun WeekDayScreen(modifier: Modifier = Modifier) {
             label = { Text("Номер дня") }
         )
 
+        Button(onClick = {
+            result = getDayOfWeek(input)
+        }) {
+            Text("Показать")
+        }
+
         Text(text = result)
+    }
+}
+
+fun getDayOfWeek(input: String): String {
+    return when (input.trim().toIntOrNull()) {
+        1 -> "Понедельник"
+        2 -> "Вторник"
+        3 -> "Среда"
+        4 -> "Четверг"
+        5 -> "Пятница"
+        6 -> "Суббота"
+        7 -> "Воскресенье"
+        else -> "Введите число от 1 до 7"
     }
 }
 
