@@ -64,7 +64,11 @@ fun WeekDayScreen(modifier: Modifier = Modifier) {
 }
 
 fun getDayOfWeek(input: String): String {
-    return when (input.trim().toIntOrNull()) {
+    if (input.isBlank()) return "Введите номер дня"
+    val number = input.trim().toIntOrNull()
+        ?: return "Введите число от 1 до 7"
+
+    return when (number) {
         1 -> "Понедельник"
         2 -> "Вторник"
         3 -> "Среда"
