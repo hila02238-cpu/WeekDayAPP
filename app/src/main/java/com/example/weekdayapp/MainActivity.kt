@@ -11,6 +11,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.weekdayapp.ui.theme.WeekDayAppTheme
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +42,18 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun WeekDayScreen(modifier: Modifier = Modifier) {
-    // Сюда добавим UI
+    var input by remember { mutableStateOf("") }
+    var result by remember { mutableStateOf("") }
+
+    Column(modifier = modifier.padding(16.dp)) {
+        OutlinedTextField(
+            value = input,
+            onValueChange = { input = it },
+            label = { Text("Номер дня") }
+        )
+
+        Text(text = result)
+    }
 }
 
 @Preview(showBackground = true)
